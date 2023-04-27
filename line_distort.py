@@ -45,14 +45,12 @@ def loop_thru(input_folder):
             
             
             img = cv2.imread(os.path.join(input_folder, filename))
-            #cv2.imshow('original Image', img)
+     
             img = distort_lines(img)
 
-            # blurred_img = cv2.boxFilter(img, -1, ksize)
             # Check if the image is not None and has a valid size
             if img is not None and img.shape[0] > 0 and img.shape[1] > 0:
-                #cv2.imshow('Distorted Image', img)
-                # Save the processed image in the output folder
+           
                 output_path = os.path.join(new_folder_name, filename)
                 #print(output_path)
                 cv2.imwrite(output_path, img)
