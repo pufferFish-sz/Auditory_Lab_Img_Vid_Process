@@ -8,7 +8,6 @@ def distort_lines(image_array):
     num_rows, num_cols, num_channels = image_array.shape
 
     # Compute the block size based on the image height
-    # block_size = int(num_rows / np.random.randint(2, 6))
     block_size = int(num_rows /3)
 
     # Compute the number of blocks
@@ -24,7 +23,6 @@ def distort_lines(image_array):
         block_end = block_start + block_size
         block = image_array[block_start:block_end, :, :]
 
-        # Shuffle the lines in the block
         np.random.shuffle(block)
 
         # Copy the shuffled block to the distorted image array
@@ -43,7 +41,6 @@ def loop_thru(input_folder):
 
     # Loop through all the files in the input folder
     for filename in os.listdir(input_folder):
-        # Check if the file is an image (based on file extension)
         if filename.endswith(".jpg") or filename.endswith(".jpeg") or filename.endswith(".png"):
             
             
