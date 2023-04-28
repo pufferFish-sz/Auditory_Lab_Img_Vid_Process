@@ -4,13 +4,11 @@ import os
 from PIL import Image
 
 def distort_lines(image_array):
-    # Get the shape of the image
+
     num_rows, num_cols, num_channels = image_array.shape
 
-    # Compute the block size based on the image height
     block_size = int(num_rows /3)
 
-    # Compute the number of blocks
     num_blocks = int(num_rows / block_size)
 
     # Create an array to store the distorted image
@@ -32,14 +30,11 @@ def distort_lines(image_array):
 
 def loop_thru(input_folder):
 
-    # Define the name of the new folder
     new_folder_name = "distorted_images"
 
-    # Create a new folder
     if not os.path.exists(new_folder_name):
         os.makedirs(new_folder_name)
 
-    # Loop through all the files in the input folder
     for filename in os.listdir(input_folder):
         if filename.endswith(".jpg") or filename.endswith(".jpeg") or filename.endswith(".png"):
             
@@ -52,7 +47,7 @@ def loop_thru(input_folder):
             if img is not None and img.shape[0] > 0 and img.shape[1] > 0:
            
                 output_path = os.path.join(new_folder_name, filename)
-                #print(output_path)
+            
                 cv2.imwrite(output_path, img)
             else:
                 print("Error: Could not load or process image:", filename)
